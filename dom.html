@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM Manipulation Assignment (70% Done)</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        #dynamicText {
+            color: blue;
+            margin: 10px 0;
+        }
+
+        .sample-text {
+            color: green;
+        }
+
+        #image {
+            width: 250px;
+            height: 150px;
+        }
+
+        button {
+            margin: 5px;
+        }
+
+        /* Random placement for in-progress feel */
+        .in-progress {
+            background-color: yellow;
+            font-style: italic;
+            color: black;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>DOM Manipulation Assignment</h1>
+
+    <p id="dynamicText">This is the original text. <span class="in-progress"></span></p>
+
+    <button onclick="changeText()">Change Text</button>
+
+    <!-- Random button placement -->
+    <div style="margin-top: 30px;">
+        <button onclick="changePosition()">Change Position</button>
+    </div>
+    
+    <br>
+
+    <img id="image" src="image.jpg" alt="placeholder image">
+    <br>
+    <button onclick="changeImage()">Change Image</button>
+
+    <h3 style="margin-top: 30px;">Class-based Text Modification</h3>
+    <p class="sample-text">Sample paragraph 1. <span class="in-progress"></span></p>
+    <p class="sample-text">Sample paragraph 2. <span class="in-progress"></span></p>
+
+    <div style="margin-top: 10px;">
+        <button onclick="changeClassText()">Modify Class Text</button>
+    </div>
+
+    <h3>Node Addition/Deletion <span class="in-progress"></span></h3>
+    <button onclick="addNode()">Add Node</button>
+    <button onclick="deleteNode()">Delete Node</button>
+
+    <div id="parentNode" style="margin-top: 20px;">
+        <p id="textNode">This node will be deleted.</p>
+    </div>
+
+    <script>
+        // Function to change the inner text of the paragraph with id="dynamicText"
+        function changeText() {
+            const textElement = document.getElementById("dynamicText");
+            textElement.innerHTML = "Text has been changed!";
+            textElement.style.color = "red";  // Change text color
+        }
+
+        // Function to change the position of the paragraph (random placement, unfinished)
+        function changePosition() {
+            const textElement = document.getElementById("dynamicText");
+            textElement.style.position = "absolute";
+            textElement.style.top = "200px"; // Random position
+            textElement.style.left = "150px"; 
+        }
+
+        // Function to change the image source
+        function changeImage() {
+            const image = document.getElementById("image");
+            image.src = "https://via.placeholder.com/250x150/ff0000";
+        }
+
+        // Function to modify text for all elements with the class name "sample-text"
+        function changeClassText() {
+            const elements = document.getElementsByClassName("sample-text");
+            for (let i = 0; i < elements.length; i++) {
+                elements[i].innerHTML = "Modified class text " + (i + 1);
+                elements[i].style.color = "purple";
+            }
+        }
+
+        // Function to add a text node to the div with id="parentNode"
+        function addNode() {
+            const parentNode = document.getElementById("parentNode");
+            const newNode = document.createTextNode("Dynamically added text.");
+            parentNode.appendChild(newNode);
+        }
+
+        // Function to delete the node with id="textNode"
+        function deleteNode() {
+            const nodeToDelete = document.getElementById("textNode");
+            if (nodeToDelete) {
+                nodeToDelete.remove();
+            } else {
+                alert("Node already deleted.");
+            }
+        }
+    </script>
+
+</body>
+</html>
